@@ -297,7 +297,7 @@ static int update(const printbuffer *p)
     }
     str = p->buffer + p->offset;
 
-    return p->offset + strlen(str);
+    return p->offset + (int)strlen(str);
 }
 
 /* Render the number nicely from the given item into a string. */
@@ -692,7 +692,7 @@ static char *print_string_ptr(const char *str, printbuffer *p)
     /* no characters have to be escaped */
     if (!flag)
     {
-        len = ptr - str;
+        len = (int)(ptr - str);
         if (p)
         {
             out = ensure(p, len + 3);
